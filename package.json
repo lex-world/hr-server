@@ -1,0 +1,20 @@
+{
+  "name": "hr-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/lex-world/hr-server.git",
+  "author": "Laxman Rai <lex.world.07.26@protonmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.12"
+  }
+}
