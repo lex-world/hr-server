@@ -7,6 +7,24 @@ const app = express();
 const cors = require("cors");
 app.use(cors());
 
+// /**
+//  * @dev rate limiter is added to handle Bruteforce attacks
+//  */
+// const rateLimit = require("express-rate-limit");
+
+// /**
+//  * * https://expressjs.com/en/guide/behind-proxies.html
+//  */
+// app.set("trust proxy", 1); // @dev in case limiter does not work on aws, heroku etc
+
+// const limiter = rateLimit({
+//   windowMs: 15 * 60 * 1000, // @dev 15 minutes
+//   max: 100, // @dev limit each IP to 100 requests per windowMs
+// });
+
+// //  apply to all requests
+// app.use(limiter);
+
 /**
  * @dev log server request and response
  */
@@ -44,13 +62,13 @@ mongoose.connect(
 /**
  * @dev Routers Configuration
  */
-const EmployeeRouter = require("./Routes/Employee");
+const EmployeeRouter = require("./Routes/Employee.Routes");
 app.use("/api/v1/employee", EmployeeRouter);
 
 /**
  * @dev handling 404 api request from client
  */
-app.use((req, res) => {
+app.use("*", (req, res) => {
   res.status(404).json({ message: "404 API not found!" });
 });
 
